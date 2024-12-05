@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riot API Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>소환사 검색</h1>
+    <form action="/search" method="post">
+        <label for="nickname">닉네임:</label>
+        <input type="text" id="nickname" name="nickname" required>
+        <br>
+        <label for="tagline">태그라인:</label>
+        <input type="text" id="tagline" name="tagline" required>
+        <br>
+        <button type="submit">검색</button>
+    </form>
+</body>
+</html>
