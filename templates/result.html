@@ -1,16 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    <h1>소환사 검색 결과</h1>
-    <p><strong> {{ player_id.get('gameName', ' ') }}#</strong>{{ player_id.get('tagLine',' ')}}</p>
-    <p><strong>레벨:</strong> {{ player.get('summonerLevel', '정보 없음') }}</p>
-    <p><strong>PUUID:</strong> {{ puuid }}</p>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="summoner-info">
+      <!-- 아이콘과 닉네임/태그라인을 같은 라인에 배치 -->
+      <div class="summoner-icon">
+        <img
+          src="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/profile-icons/{{ player.get('profileIconId', '0') }}.jpg"
+          alt="Summoner Icon"
+        />
+      </div>
+      <div class="summoner-details">
+        <p>
+          <strong>{{ player_id.get('gameName', '정보 없음') }}#</strong>{{
+          player_id.get('tagLine', '정보 없음') }}
+        </p>
+        <p>
+          <strong>레벨:</strong> {{ player.get('summonerLevel', '정보 없음') }}
+        </p>
+      </div>
+    </div>
     <a href="/">다시 검색</a>
-</body>
+  </body>
 </html>

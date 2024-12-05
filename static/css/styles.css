@@ -1,86 +1,111 @@
 /* 전체 페이지 스타일 */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f4f8;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  font-family: "Arial", sans-serif;
+  background-color: #1c1c50;
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* 아이콘과 텍스트 배치 */
+.summoner-info {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 20px;
+}
+
+.summoner-icon img {
+  width: 80px; /* 아이콘 크기 */
+  height: 80px; /* 아이콘 크기 */
+  margin-right: 20px; /* 아이콘과 텍스트 사이의 간격 */
+  border-radius: 50%; /* 원형 아이콘 */
+}
+
+.summoner-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.summoner-details p {
+  margin: 5px 0;
 }
 
 /* 컨테이너 스타일 */
 form {
-    background: #ffffff;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
+  background: #ffffff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
 }
 
 /* 제목 스타일 */
 h1 {
-    color: #333333;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
 }
 
 /* 라벨 스타일 */
 label {
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 5px;
-    color: #555555;
-    text-align: left;
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  color: black;
+  text-align: left;
 }
 
 /* 입력 필드 스타일 */
 input[type="text"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    box-sizing: border-box;
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
 /* 버튼 스타일 */
 button {
-    background-color: #007BFF;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* 반응형 디자인 */
 @media (max-width: 480px) {
-    form {
-        padding: 15px 20px;
-    }
+  form {
+    padding: 15px 20px;
+  }
 
-    h1 {
-        font-size: 1.5rem;
-    }
+  h1 {
+    font-size: 1.5rem;
+  }
 
-    input[type="text"] {
-        width: calc(100% - 16px);
-        font-size: 0.9rem;
-    }
+  input[type="text"] {
+    width: calc(100% - 16px);
+    font-size: 0.9rem;
+  }
 
-    button {
-        font-size: 0.9rem;
-        padding: 8px 15px;
-    }
+  button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
 }

@@ -23,7 +23,7 @@ def home():
 # riot api한테 찾아가서 소환사 정보를 달라 한다.
 @app.route('/search', methods=['POST'])
 def search():
-    # 사용자 입력 처리
+    # 사용자 입력 처리 
     user_nickname = request.form['nickname']
     tag_line = request.form['tagline']
     
@@ -32,7 +32,9 @@ def search():
     url = f"https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/{encoded_name}/{tag_line}"
     player_id = requests.get(url, headers=REQUEST_HEADERS).json()
 
-    print(f"player id : {player_id}")
+    # player_id =  {'puuid': '37I3NLp4u1JHu6Pivd32cehW2ix6vkDl46-Q-Tr7BkAt3OTszePvGXYlqwrf9iWt_84bh8CwhzKUUw',
+    # 'gameName': 'Faker',
+    # 'tagLine': 'KR1'}
     
     # PUUID로 Summoner 정보 가져오기
     puuid = player_id.get('puuid', 'PUUID 없음')
@@ -43,7 +45,15 @@ def search():
     summoner_url = f"https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/{puuid}"
     player = requests.get(summoner_url, headers=REQUEST_HEADERS).json()
 
-    print(f"player : {player}")
+
+    # player = {'id': 'nVkiesXMvIW6ceO7gOarLMOlVNUIpWui2BRytC4ksulWwYM',
+    # 'accountId': 'cJ1CEy9NvUpgyB4PUbEgYJqKgFH7uRWLufv7uzgHF0wUNxkTi0cAjC2K', 
+    # 'puuid': '37I3NLp4u1JHu6Pivd32cehW2ix6vkDl46-Q-Tr7BkAt3OTszePvGXYlqwrf9iWt_84bh8CwhzKUUw', 
+    # 'profileIconId': 1, 
+    # 'revisionDate': 1733305792327, 
+    # 'summonerLevel': 489}
+    
+
     # 결과를 페이지에 표시
     return render_template('result.html', player=player, puuid=puuid, player_id=player_id)
 
