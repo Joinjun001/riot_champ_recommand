@@ -4,7 +4,7 @@ from urllib import parse
 
 app = Flask(__name__)
 
-# Riot API Key 24시간마다 갱신 필요, 401에러 일시 여기부터 보기 
+# Riot API Key 24시간마다 갱신 필요, 401에러 발생시 여기부터 보기 
 api_key = "RGAPI-0215398d-8e78-4508-b076-fd1204e854e9"  
 REQUEST_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
