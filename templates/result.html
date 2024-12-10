@@ -19,6 +19,17 @@
         />
       </div>
       <div class="summoner-details">
+        <form id="searchForm" action="/search" method="post">
+          <input
+            type="text"
+            id="userInput"
+            name="userInput"
+            placeholder="Faker#KR1 입력!"
+            required
+          />
+          <br />
+          <button type="submit">검색</button>
+        </form>
         <p>
           <strong>{{ player_id.get('gameName', '정보 없음') }}#</strong>{{
           player_id.get('tagLine', '정보 없음') }}
@@ -26,8 +37,13 @@
         <p>
           <strong>레벨:</strong> {{ player.get('summonerLevel', '정보 없음') }}
         </p>
+        <p><strong>puuid:</strong> {{ player_id.get('puuid', '정보 없음') }}</p>
       </div>
     </div>
-    <a href="/">다시 검색</a>
+    <script>
+      // Flask에서 전달된 데이터를 JSON으로 변환하여 포함
+      const matchRes = JSON.parse("{{ match_res | tojson | safe }}");
+      console.log("Match Res:", matchRes);
+    </script>
   </body>
 </html>
