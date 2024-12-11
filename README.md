@@ -5,10 +5,6 @@ Riot Game API를 활용하여 개발하는 웹 애플리케이션 프로젝트.
 op.gg처럼 소환사의 정보를 통해서 소환사에게 필요한 정보를 알려주는 사이트를 만들어보자. 🥵
 (개인용 API KEY라 요청할 수 있는 데이터가 한정되어있다.) 😭
 
-\*\* 각 개발환경에서 app.py의 요청헤더의 User-Agent 부분을 바꿔줘야 한다.
-윈도우일 경우 :
-"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36"
-
 ## 설치 및 실행 방법 (개발하면서 맥북이랑 윈도우 왔다갔다 할 때 사용)
 
 1. 프로젝트 클론
@@ -35,7 +31,11 @@ api_key = "YOUR_RIOT_API_KEY"
 ```
 
 4. 애플리케이션 실행
-   `python3 app.py`
+
+```python
+
+   python3 app.py # 실행안되면 python app.py이나 flask run (flask run은 debug mode가 off가 될수 있으므로 비추천)
+```
 
 ## 📖 참고 자료
 
@@ -54,6 +54,11 @@ api_key = "YOUR_RIOT_API_KEY"
 ### 2024.12.10
 
 - 개발환경에 따라서 요청헤더 부분 에러 해결 (User-Agent 부분 수정)
+
+### 2024.12.11
+
+- API_KEYS 같은 기본 정보를 담는 settings.py
+- app.py에 다 때려박았었는데 함수들을 정리해서 helpers.py 추가
 
 ## 보완할 점
 

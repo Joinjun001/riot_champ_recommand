@@ -38,12 +38,13 @@
           <strong>레벨:</strong> {{ player.get('summonerLevel', '정보 없음') }}
         </p>
         <p><strong>puuid:</strong> {{ player_id.get('puuid', '정보 없음') }}</p>
+        <p>{{match_data.info.participants[5].win}}</p>
       </div>
     </div>
     <script>
-      // Flask에서 전달된 데이터를 JSON으로 변환하여 포함
-      const matchRes = JSON.parse("{{ match_res | tojson | safe }}");
-      console.log("Match Res:", matchRes);
+      // matches는 20개의 경기 아이디이다. matches에서 match_data.info.participants[5].win 하면 그사람의 아이디가 나옴.
+      const matchRes = JSON.parse(`{{ match_data | tojson | safe }}`);
+      console.log(matchRes);
     </script>
   </body>
 </html>
