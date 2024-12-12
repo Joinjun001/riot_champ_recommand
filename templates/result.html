@@ -37,8 +37,7 @@
         <p>
           <strong>레벨:</strong> {{ player.get('summonerLevel', '정보 없음') }}
         </p>
-        <p><strong>puuid:</strong> {{ player_id.get('puuid', '정보 없음') }}</p>
-        <p>{{match_data.info.participants[5].win}}</p>
+        <p><strong>최근 랭크게임 20전 승률 : {{win_percent}} % </strong></p>
       </div>
     </div>
     <script>

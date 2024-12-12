@@ -85,3 +85,13 @@ def did_player_win_match(puuid, match_id):
         return None
     player_info = match_data['info']['participants'][player_index]
     return player_info['win']
+
+def win_percent_of_last_20_games(puuid):
+    summoner = get_summoner_by_puuid(puuid)
+    matches = get_match_ids_by_puuid(summoner['puuid'], 20)
+
+    wins = 0
+    for match in matches:
+        if did_player_win_match(summoner['puuid'], match):
+            wins += 1
+    return int((wins/len(matches)) * 100)
