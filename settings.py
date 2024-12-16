@@ -2,7 +2,7 @@
 import platform
 
 # Riot API Key (필요 시 업데이트)
-API_KEY = "RGAPI-c301855b-0c85-49de-b817-612eab8d4c0a"
+API_KEY = "RGAPI-4a1710d3-a808-4aca-b2c0-a96fd51e0102"
 
 # 운영 체제에 따른 User-Agent 설정
 if platform.system() == "Darwin":  # macOS

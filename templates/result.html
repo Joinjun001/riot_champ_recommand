@@ -6,7 +6,7 @@
     <title>Search Result</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/styles.css') }}"
+      href="{{ url_for('static', filename='css/result.css') }}"
     />
   </head>
   <body>
@@ -30,20 +30,42 @@
           <br />
           <button type="submit">검색</button>
         </form>
-        <p>
+        <div>
           <strong>{{ player_id.get('gameName', '정보 없음') }}#</strong>{{
           player_id.get('tagLine', '정보 없음') }}
-        </p>
-        <p>
+        </div>
+        <div>
           <strong>레벨:</strong> {{ player.get('summonerLevel', '정보 없음') }}
-        </p>
-        <p><strong>최근 랭크게임 20전 승률 : {{win_percent}} % </strong></p>
+        </div>
+        <div>
+          <strong
+            >{{ranked_stats[0].get('tier','Unranked')}}
+            {{ranked_stats[0].get('rank','Unranked')}}</strong
+          >
+        </div>
+        <div>
+          {{ranked_stats[0].get('wins', '0')}} 승
+          {{ranked_stats[0].get('losses', '0')}} 패
+        </div>
+        <div id="win_percent"></div>
+
+        <!-- <div><strong>최근 랭크게임 20전 승률 : {{win_percent}} % </strong></div> -->
       </div>
     </div>
     <script>
       // matches는 20개의 경기 아이디이다. matches에서 match_data.info.participants[5].win 하면 그사람의 아이디가 나옴.
       const matchRes = JSON.parse(`{{ match_data | tojson | safe }}`);
       console.log(matchRes);
+      const ranked_stats = JSON.parse(`{{ranked_stats | tojson | safe }}`);
+      console.log(ranked_stats);
+
+      const wins = ranked_stats[0]["wins"];
+      const losses = ranked_stats[0]["losses"];
+      const win_percent = parseInt((wins / (wins + losses)) * 100);
+
+      const win_percent_div = document.getElementById("win_percent");
+
+      win_percent_div.textContent = `승률 : ${win_percent}%`;
     </script>
   </body>
 </html>

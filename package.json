@@ -1,0 +1,17 @@
+{
+  "name": "riot_champ_recommand",
+  "version": "1.0.0",
+  "description": "Riot Game API를 활용하여 개발하는 웹 애플리케이션 프로젝트.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16"
+  }
+}

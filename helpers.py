@@ -23,7 +23,7 @@ def get_riot_account(nickname, tagline):
 
 def get_summoner_by_puuid(puuid):
     """PUUID로 소환사 정보를 리턴합니다.
-    {'id': 'nVki...', 
+    {'id': 'nVki...', < 소환사의 랭크 정보를 불러올때 필요함.
     'accountId': 'cJ1CEy...', 
     'puuid': '37I3...', 
     'profileIconId': 1, 
@@ -87,6 +87,7 @@ def did_player_win_match(puuid, match_id):
     return player_info['win']
 
 def win_percent_of_last_20_games(puuid):
+    """puuid를 통해 소환사의 최근 20경기 승률을 가져옵니다.(로딩 김)"""
     summoner = get_summoner_by_puuid(puuid)
     matches = get_match_ids_by_puuid(summoner['puuid'], 20)
 
@@ -95,3 +96,17 @@ def win_percent_of_last_20_games(puuid):
         if did_player_win_match(summoner['puuid'], match):
             wins += 1
     return int((wins/len(matches)) * 100)
+
+def get_ranked_stats(encrytped_summoner_id):
+    """암호화된 summoner_id를 통해 소환사의 랭크 정보를 리턴합니다."""
+    url = f"https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/{encrytped_summoner_id}"
+
+    try:    
+        response = requests.get(url, headers=REQUEST_HEADERS)
+        response.raise_for_status()
+        ranked_stats = response.json()
+        return ranked_stats
+    except requests.exceptions.RequestException as e:
+        print(f"encrytped_summoner_id로 소환사의 랭크 정보를 가져오는 중 에러가 발생했습니다. {e}")
+        return None
+    

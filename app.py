@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from helpers import get_riot_account, get_summoner_by_puuid, get_match_ids_by_puuid, get_match_data,win_percent_of_last_20_games
+from helpers import get_riot_account, get_summoner_by_puuid, get_match_ids_by_puuid, get_match_data,win_percent_of_last_20_games, get_ranked_stats
 
 app = Flask(__name__)
 
@@ -32,6 +32,11 @@ def search():
     player = get_summoner_by_puuid(puuid)
     if not player:
         return "소환사 정보를 가져올 수 없습니다."
+    summoner_id = player["id"] 
+
+    # 소환사의 랭크 정보 가져오기
+    
+
 
     # 최근 경기 ID 가져오기
     matches = get_match_ids_by_puuid(puuid,20)
@@ -44,16 +49,22 @@ def search():
         return "경기 데이터를 가져올 수 없습니다."
 
     
-    win_percent =  win_percent_of_last_20_games(puuid)
-    if not win_percent:
-        return "승률 정보를 가져올 수 없습니다."
+    # win_percent =  win_percent_of_last_20_games(puuid)
+    # if not win_percent:
+    #     return "승률 정보를 가져올 수 없습니다."
+    
+
+    ranked_stats = get_ranked_stats(summoner_id)
+    print(ranked_stats)
+
     # 결과를 페이지에 표시
     return render_template(
         'result.html',
         player=player,
         player_id=player_id,
         match_data=match_data,
-        win_percent = win_percent
+        # win_percent = win_percent
+        ranked_stats = ranked_stats
         
     )
 
